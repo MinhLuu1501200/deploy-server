@@ -1,21 +1,22 @@
-name: Deploy Production 
+name: Deploy Production
 
 on:
   push:
     branches: ['main']
   pull_request:
     branches: ['main']
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps: 
-      - uses: actions/checkout@v4 
-      - name: Use Node.js ${{matrix.node-version}}
-        use: actions/setup-node@v4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
         with:
           node-version: 20.18.0
           cache: 'npm'
-      - name: Create .env file 
-        run : echo "${{secrets.ENV_PRODUCTION}}" > .env
+      - name: Create .env file
+        run: echo "${{secrets.ENV_PRODUCTION}}" > .env
       - run: npm i --force
-      - run : npm run build
+      - run: npm run build
