@@ -2,7 +2,7 @@ name: telegram message
 on: 
   push: 
     branches: ["tele"]
-  pull:
+  pull_request:
     branches: ["tele"]
 jobs:
 
